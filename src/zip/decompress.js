@@ -7,12 +7,12 @@ import fs from 'fs';
 const decompress = async () => {
   const currentDir = import.meta.dirname;
   const targetDir = join(currentDir, 'files');
-  const file = 'fileToCompress.txt.gz';
+  const file = 'archive.gz';
 
   const filePathFrom = join(targetDir, file);
   const source = createReadStream(filePathFrom);
 
-  const compressFile = `${file.slice(0, -3)}`;
+  const compressFile = 'fileToCompress.txt';
   const filePathTo = join(targetDir, compressFile);
   const destination = createWriteStream(filePathTo);
 

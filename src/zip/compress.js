@@ -12,7 +12,7 @@ const compress = async () => {
   const filePathFrom = join(targetDir, file);
   const source = createReadStream(filePathFrom);
 
-  const compressFile = `${file}.gz`;
+  const compressFile = 'archive.gz';
   const filePathTo = join(targetDir, compressFile);
   const destination = createWriteStream(filePathTo);
 
