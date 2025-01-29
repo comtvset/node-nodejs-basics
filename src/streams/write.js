@@ -2,13 +2,9 @@ import { join } from 'node:path';
 import { createWriteStream } from 'fs';
 import { stdin, stdout } from 'node:process';
 
-const currentDir = import.meta.dirname;
-const targetDir = join(currentDir, 'files');
-const file = 'fileToWrite.txt';
-
-const filePath = join(targetDir, file);
-
 const write = async () => {
+  const targetFile = 'fileToWrite.txt';
+  const filePath = join(import.meta.dirname, 'files', targetFile);
   const stream = createWriteStream(filePath, 'utf-8');
 
   stream.on('error', (err) => {
@@ -22,7 +18,7 @@ const write = async () => {
   );
 
   process.on('SIGINT', () => {
-    stdout.write(`\n\n\n\x1b[32mFile "${file}" written successfully!`);
+    stdout.write(`\n\n\n\x1b[32mFile "${targetFile}" written successfully!`);
     stdout.write('\n\x1b[33mSee you soon...');
     process.exit();
   });

@@ -5,8 +5,7 @@ import { pipeline } from 'node:stream';
 import fs from 'fs';
 
 const decompress = async () => {
-  const currentDir = import.meta.dirname;
-  const targetDir = join(currentDir, 'files');
+  const targetDir = join(import.meta.dirname, 'files');
   const file = 'archive.gz';
 
   const filePathFrom = join(targetDir, file);

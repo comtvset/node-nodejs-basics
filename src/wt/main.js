@@ -3,8 +3,7 @@ import { Worker } from 'node:worker_threads';
 import os from 'os';
 
 const performCalculations = async () => {
-  const currentDir = import.meta.dirname;
-  const workerFile = join(currentDir, 'worker.js');
+  const workerFile = join(import.meta.dirname, 'worker.js');
   const numCPUs = os.cpus().length;
   const promises = [];
 

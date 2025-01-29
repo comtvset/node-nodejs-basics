@@ -5,8 +5,7 @@ import { pipeline } from 'node:stream';
 import fs from 'fs';
 
 const compress = async () => {
-  const currentDir = import.meta.dirname;
-  const targetDir = join(currentDir, 'files');
+  const targetDir = join(import.meta.dirname, 'files');
   const file = 'fileToCompress.txt';
 
   const filePathFrom = join(targetDir, file);
