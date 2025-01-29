@@ -1,10 +1,10 @@
 import { readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 
-const currentDir = import.meta.dirname;
-const targetDir = join(currentDir, 'files');
-
 const list = async () => {
+  const currentDir = import.meta.dirname;
+  const targetDir = join(currentDir, 'files');
+
   try {
     const getFilesCurrentDir = await readdir(currentDir);
     if (!getFilesCurrentDir.includes('files')) err;

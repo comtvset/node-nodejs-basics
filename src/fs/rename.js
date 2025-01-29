@@ -2,12 +2,12 @@ import { readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import fs from 'fs/promises';
 
-const currentDir = import.meta.dirname;
-const targetDir = join(currentDir, 'files');
-const wrongFilenamePath = join(currentDir, 'files/wrongFilename.txt');
-const properFilenamePath = join(currentDir, 'files/properFilename.md');
-
 const rename = async () => {
+  const currentDir = import.meta.dirname;
+  const targetDir = join(import.meta.dirname, 'files');
+  const wrongFilenamePath = join(currentDir, 'files/wrongFilename.txt');
+  const properFilenamePath = join(currentDir, 'files/properFilename.md');
+
   try {
     const files = await readdir(targetDir);
     if (

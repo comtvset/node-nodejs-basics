@@ -1,13 +1,12 @@
 import { writeFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 
-const currentDir = import.meta.dirname;
-const targetDir = join(currentDir, 'files');
-
-const newFile = 'fresh.txt';
-const targetPathFile = join(targetDir, newFile);
-
 const create = async () => {
+  const currentDir = import.meta.dirname;
+  const targetDir = join(currentDir, 'files');
+  const newFile = 'fresh.txt';
+  const targetPathFile = join(targetDir, newFile);
+
   try {
     const files = await readdir(targetDir);
     if (files.includes(newFile)) err;
