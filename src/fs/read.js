@@ -8,11 +8,13 @@ const read = async () => {
 
   try {
     const files = await readdir(targetDir);
-    if (!files.includes('fileToRead.txt')) err;
+    if (!files.includes('fileToRead.txt')) {
+      throw new Error('FS operation failed');
+    }
 
     console.log(await readFile(fileToReadPath, 'utf8'));
   } catch (err) {
-    throw new Error('FS operation failed');
+    throw err;
   }
 };
 

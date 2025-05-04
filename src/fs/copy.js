@@ -8,11 +8,13 @@ const copy = async () => {
 
   try {
     const files = await readdir(currentDir);
-    if (!files.includes('files') || files.includes('files_copy')) err;
+    if (!files.includes('files') || files.includes('files_copy')) {
+      throw new Error('FS operation failed');
+    }
 
     await cp(copyFromDir, targetDir, { recursive: true });
   } catch (err) {
-    throw new Error('FS operation failed');
+    throw err;
   }
 };
 

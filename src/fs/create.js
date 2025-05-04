@@ -8,12 +8,16 @@ const create = async () => {
   const targetPathFile = join(targetDir, newFile);
 
   try {
-    const files = await readdir(targetDir);
-    if (files.includes(newFile)) err;
-
-    writeFile(targetPathFile, 'I am fresh and young', 'utf8');
+    await writeFile(targetPathFile, 'I am fresh and young', {
+      encoding: 'utf8',
+      flag: 'wx',
+    });
   } catch (err) {
-    throw new Error('FS operation failed');
+    if (err.code === 'EEXIST') {
+      throw new Error('FS operation failed');
+    } else {
+      throw err;
+    }
   }
 };
 

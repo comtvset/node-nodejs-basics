@@ -7,11 +7,13 @@ const list = async () => {
 
   try {
     const getFilesCurrentDir = await readdir(currentDir);
-    if (!getFilesCurrentDir.includes('files')) err;
+    if (!getFilesCurrentDir.includes('files')) {
+      throw new Error('FS operation failed');
+    }
 
     console.log(await readdir(targetDir));
   } catch (err) {
-    throw new Error('FS operation failed');
+    throw err;
   }
 };
 

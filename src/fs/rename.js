@@ -13,12 +13,13 @@ const rename = async () => {
     if (
       !files.includes('wrongFilename.txt') ||
       files.includes('properFilename.md')
-    )
-      err;
+    ) {
+      throw new Error('FS operation failed');
+    }
 
     await fs.rename(wrongFilenamePath, properFilenamePath);
   } catch (err) {
-    throw new Error('FS operation failed');
+    throw err;
   }
 };
 

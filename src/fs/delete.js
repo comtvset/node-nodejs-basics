@@ -8,11 +8,13 @@ const remove = async () => {
 
   try {
     const files = await readdir(targetDir);
-    if (!files.includes('fileToRemove.txt')) err;
+    if (!files.includes('fileToRemove.txt')) {
+      throw new Error('FS operation failed');
+    }
 
     await rm(fileToRemovePath);
   } catch (err) {
-    throw new Error('FS operation failed');
+    throw err;
   }
 };
 
